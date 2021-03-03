@@ -1,9 +1,9 @@
 #include "MatrixSortingAlgorithm.h"
 
-vector<vector<int>> generate(vector<vector<int>> matrix, size_t m, size_t n)
-{
-	int temp = 0;
+using namespace std;
 
+vector<vector<int>> generate(vector<vector<int>> matrix, const size_t m, const size_t n)
+{
 	for (size_t i = 0; i < m; i++)
 	{
 		for (size_t j = 0; j < n; j++)
@@ -12,9 +12,7 @@ vector<vector<int>> generate(vector<vector<int>> matrix, size_t m, size_t n)
 			{
 				if (matrix[k][j] < matrix[k + 1][j])
 				{
-					temp = matrix[k][j];
-					matrix[k][j] = matrix[k + 1][j];
-					matrix[k + 1][j] = temp;
+					swap(matrix[k][j], matrix[k + 1][j]);
 				}
 			}
 		}
@@ -28,9 +26,7 @@ vector<vector<int>> generate(vector<vector<int>> matrix, size_t m, size_t n)
 			{
 				if (matrix[i][k] < matrix[i][k + 1])
 				{
-					temp = matrix[i][k];
-					matrix[i][k] = matrix[i][k + 1];
-					matrix[i][k + 1] = temp;
+					swap(matrix[i][k], matrix[i][k + 1]);
 				}
 			}
 		}
@@ -39,7 +35,7 @@ vector<vector<int>> generate(vector<vector<int>> matrix, size_t m, size_t n)
 	return matrix;
 }
 
-void printToConsole(vector<vector<int>> matrix, size_t m, size_t n)
+void printToConsole(const vector<vector<int>> matrix, const size_t m, const size_t n)
 {
 	for (size_t i = 0; i < m; i++)
 	{
@@ -52,7 +48,7 @@ void printToConsole(vector<vector<int>> matrix, size_t m, size_t n)
 	cout << endl;
 }
 
-vector<vector<int>> fillMatrixWithRandomValues(size_t m, size_t n)
+vector<vector<int>> fillMatrixWithRandomValues(const size_t m, const size_t n)
 {
 	vector<vector<int>> matrix;
 	for (size_t i = 0; i < m; i++)
